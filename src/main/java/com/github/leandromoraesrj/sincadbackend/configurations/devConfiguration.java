@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile(value = "dev")
+@Profile("dev")
 public class devConfiguration {
 	//Para Injetar um parâmetro de aplication.properties
 	@Value("${spring.application.name}")
