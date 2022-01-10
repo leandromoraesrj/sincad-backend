@@ -1,13 +1,18 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -29,7 +34,12 @@ public class UnidadeEmpresarial implements Serializable {
 	private String raizCNPJ;	
 	@Column(name = "nu_cpf")
 	private String cpf;
-	
+	@OneToMany(mappedBy = "unidadeEmpresarial")
+	private List<Estabelecimento> estabelecimentos = new ArrayList<>();
+	@ElementCollection
+	@CollectionTable(name = "historico_no_razao_social")
+	private List<String> historicoRazaoSocial = new ArrayList<>();
+
 	public UnidadeEmpresarial() {		
 	}
 
@@ -80,6 +90,22 @@ public class UnidadeEmpresarial implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	
+	public List<Estabelecimento> getEstabelecimentos() {
+		return estabelecimentos;
+	}
+
+	public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
+		this.estabelecimentos = estabelecimentos;
+	}
+	
+	public List<String> getHistoricoRazaoSocial() {
+		return historicoRazaoSocial;
+	}
+
+	public void setHistoricoRazaoSocial(List<String> historicoRazaoSocial) {
+		this.historicoRazaoSocial = historicoRazaoSocial;
 	}
 
 	@Override
