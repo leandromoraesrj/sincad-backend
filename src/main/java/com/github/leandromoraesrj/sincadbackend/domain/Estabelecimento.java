@@ -1,12 +1,12 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -37,8 +37,8 @@ public class Estabelecimento implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "sq_unidade_empresarial")
 	private UnidadeEmpresarial unidadeEmpresarial;
-	@OneToMany(mappedBy = "estabelecimento")
-	private List<Inscricao> inscricoes = new ArrayList<>();
+	@OneToOne(mappedBy = "estabelecimento", cascade = CascadeType.ALL)
+	private Inscricao inscricao;
 	@ManyToMany
 	@JoinTable(name = "estab_tipo_unidade_estab",
 			  joinColumns = @JoinColumn(name = "sq_tipo_unid_estabelecimento"),
@@ -87,14 +87,6 @@ public class Estabelecimento implements Serializable {
 	public void setUnidadeEmpresarial(UnidadeEmpresarial unidadeEmpresarial) {
 		this.unidadeEmpresarial = unidadeEmpresarial;
 	}
-
-	public List<Inscricao> getInscricoes() {
-		return inscricoes;
-	}
-
-	public void setInscricoes(List<Inscricao> inscricoes) {
-		this.inscricoes = inscricoes;
-	}
 	
 	public Set<TipoUnidadeEstabelecimento> getTiposUnidadeEstabelecimento() {
 		return tiposUnidadeEstabelecimento;
@@ -104,6 +96,14 @@ public class Estabelecimento implements Serializable {
 		this.tiposUnidadeEstabelecimento = tiposUnidadeEstabelecimento;
 	}
 	
+	public Inscricao getInscricao() {
+		return inscricao;
+	}
+
+	public void setInscricao(Inscricao inscricao) {
+		this.inscricao = inscricao;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
