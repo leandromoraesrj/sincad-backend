@@ -39,6 +39,8 @@ public class Inscricao implements Serializable {
 	private Estabelecimento estabelecimento;
 	@OneToMany(mappedBy = "inscricao")
 	private List<InscricaoCondicaoInscricaoEstadual> condicoesInscricao = new ArrayList<>();
+	@OneToMany(mappedBy = "inscricao")
+	private List<InscricaoRegimeApuracao> regimesInscricao = new ArrayList<>();
 
 	public Inscricao() {		
 	}

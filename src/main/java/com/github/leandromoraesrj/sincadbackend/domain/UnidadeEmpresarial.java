@@ -39,6 +39,8 @@ public class UnidadeEmpresarial implements Serializable {
 	@ElementCollection
 	@CollectionTable(name = "historico_no_razao_social")
 	private List<String> historicoRazaoSocial = new ArrayList<>();
+	@OneToMany(mappedBy = "id.unidadeEmpresarial")
+	private List<EstabelecimentoPrincipal> estabelecimetosPrincipal = new ArrayList<>();
 
 	public UnidadeEmpresarial() {		
 	}
@@ -108,6 +110,14 @@ public class UnidadeEmpresarial implements Serializable {
 		this.historicoRazaoSocial = historicoRazaoSocial;
 	}
 
+	public List<EstabelecimentoPrincipal> getEstabelecimetosPrincipal() {
+		return estabelecimetosPrincipal;
+	}
+
+	public void setEstabelecimetosPrincipal(List<EstabelecimentoPrincipal> estabelecimetosPrincipal) {
+		this.estabelecimetosPrincipal = estabelecimetosPrincipal;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
