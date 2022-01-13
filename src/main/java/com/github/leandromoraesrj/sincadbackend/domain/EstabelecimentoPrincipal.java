@@ -1,7 +1,7 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -18,17 +18,15 @@ public class EstabelecimentoPrincipal implements Serializable {
 	
 	@EmbeddedId
 	private EstabelecimentoPrincipalPK  id = new EstabelecimentoPrincipalPK();
-	@Temporal(TemporalType.DATE)
 	@Column(name = "dt_inicio")
-	private Date inicio;
-	@Temporal(TemporalType.DATE)
+	private LocalDate inicio;
 	@Column(name = "dt_fim")
-	private Date fim;
+	private LocalDate fim;
 	
 	public EstabelecimentoPrincipal() {		
 	}
 
-	public EstabelecimentoPrincipal(UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento, Date inicio, Date fim) {
+	public EstabelecimentoPrincipal(UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento, LocalDate inicio, LocalDate fim) {
 		super();
 		this.id.setUnidadeEmpresarial(unidadeEmpresarial);
 		this.id.setEstabelecimento(estabelecimento);		
@@ -60,19 +58,19 @@ public class EstabelecimentoPrincipal implements Serializable {
 		this.id = id;
 	}
 
-	public Date getInicio() {
+	public LocalDate getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(Date inicio) {
+	public void setInicio(LocalDate inicio) {
 		this.inicio = inicio;
 	}
 
-	public Date getFim() {
+	public LocalDate getFim() {
 		return fim;
 	}
 
-	public void setFim(Date fim) {
+	public void setFim(LocalDate fim) {
 		this.fim = fim;
 	}
 

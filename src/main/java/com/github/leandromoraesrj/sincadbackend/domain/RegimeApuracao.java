@@ -1,7 +1,7 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -27,18 +27,16 @@ public class RegimeApuracao implements Serializable {
 	@Column(name = "co_regime_apuracao")
 	private int codigo;	
 	@Column(name = "no_regime_apuracao")
-	private String nome;	
-	@Temporal(TemporalType.DATE)
+	private String nome;
 	@Column(name = "dt_inicio")
-	private Date inicio;
-	@Temporal(TemporalType.DATE)
+	private LocalDate inicio;
 	@Column(name = "dt_fim")
-	private Date fim;
+	private LocalDate fim;
 	
 	public RegimeApuracao() {		
 	}
 
-	public RegimeApuracao(int id, int codigo, String nome, Date inicio, Date fim) {
+	public RegimeApuracao(int id, int codigo, String nome, LocalDate inicio, LocalDate fim) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
@@ -71,19 +69,19 @@ public class RegimeApuracao implements Serializable {
 		this.nome = nome;
 	}
 
-	public Date getInicio() {
+	public LocalDate getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(Date inicio) {
+	public void setInicio(LocalDate inicio) {
 		this.inicio = inicio;
 	}
 
-	public Date getFim() {
+	public LocalDate getFim() {
 		return fim;
 	}
 
-	public void setFim(Date fim) {
+	public void setFim(LocalDate fim) {
 		this.fim = fim;
 	}
 

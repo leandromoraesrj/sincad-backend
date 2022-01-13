@@ -1,7 +1,9 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,18 +21,17 @@ public class DacInclusaoRegimeApuracao extends Dac {
 	@ManyToOne
 	@JoinColumn(name = "sq_regime_apuracao")
 	private RegimeApuracao regimeApuracao;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "dt_inicio")
-	private Date inicio;
+	private LocalDate inicio;
 	
 	public DacInclusaoRegimeApuracao() {
 		super();
 	}
 
-	public DacInclusaoRegimeApuracao(BigDecimal id, String numero, UnidadeEmpresarial unidadeEmpresarial,
-			Estabelecimento estabelecimento, Inscricao inscricao, RegimeApuracao regimeApuracao, Date inicio) {
-		super(id, numero, unidadeEmpresarial, estabelecimento, inscricao);
-		this.regimeApuracao = regimeApuracao;	
+	public DacInclusaoRegimeApuracao(BigDecimal id, String numero, LocalDateTime dataCriacao, Instant dataProcessamento,
+			UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento, Inscricao inscricao, RegimeApuracao regimeApuracao, LocalDate inicio) {
+		super(id, numero, dataCriacao, dataProcessamento, unidadeEmpresarial, estabelecimento, inscricao);
+		this.regimeApuracao = regimeApuracao;
 		this.inicio = inicio;
 	}
 
@@ -42,11 +43,11 @@ public class DacInclusaoRegimeApuracao extends Dac {
 		this.regimeApuracao = regimeApuracao;
 	}
 
-	public Date getInicio() {
+	public LocalDate getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(Date inicio) {
+	public void setInicio(LocalDate inicio) {
 		this.inicio = inicio;
 	}
 

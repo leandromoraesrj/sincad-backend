@@ -2,8 +2,8 @@ package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,9 +27,8 @@ public class Inscricao implements Serializable {
 	private BigDecimal id;
 	@Column(name = "nu_inscricao_estadual")
 	private Long numero;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "dt_concessao_inscricao")
-	private Date dataConcessao;
+	private LocalDate dataConcessao;
 	@OneToOne
 	@JoinColumn(name = "sq_inscricao_estabelecimento")
 	@MapsId
@@ -42,7 +41,7 @@ public class Inscricao implements Serializable {
 	public Inscricao() {		
 	}
 
-	public Inscricao(BigDecimal id, Long numero, Date dataConcessao, Estabelecimento estabelecimento) {
+	public Inscricao(BigDecimal id, Long numero, LocalDate dataConcessao, Estabelecimento estabelecimento) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -66,11 +65,11 @@ public class Inscricao implements Serializable {
 		this.numero = numero;
 	}
 
-	public Date getDataConcessao() {
+	public LocalDate getDataConcessao() {
 		return dataConcessao;
 	}
 
-	public void setDataConcessao(Date dataConcessao) {
+	public void setDataConcessao(LocalDate dataConcessao) {
 		this.dataConcessao = dataConcessao;
 	}
 

@@ -2,7 +2,7 @@ package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -27,12 +27,10 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_inscricao_condicao_inscrica_generator")
 	@Column(name = "sq_inscricao_condicao_inscrica")
 	private BigDecimal id;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "dt_inicio")
-	private Date inicio;
-	@Temporal(TemporalType.DATE)
+	private LocalDate inicio;
 	@Column(name = "dt_fim")
-	private Date fim;
+	private LocalDate fim;
 	@ManyToOne
 	@JoinColumn(name = "sq_inscricao_estabelecimento")
 	private Inscricao inscricao;
@@ -43,7 +41,7 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 	public InscricaoCondicaoInscricaoEstadual() {
 	}
 
-	public InscricaoCondicaoInscricaoEstadual(BigDecimal id, Date inicio, Date fim, Inscricao inscricao, CondicaoInscricaoEstadual condicao) {
+	public InscricaoCondicaoInscricaoEstadual(BigDecimal id, LocalDate inicio, LocalDate fim, Inscricao inscricao, CondicaoInscricaoEstadual condicao) {
 		super();
 		this.id = id;
 		this.inicio = inicio;
@@ -60,19 +58,19 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 		this.id = id;
 	}
 
-	public Date getInicio() {
+	public LocalDate getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(Date inicio) {
+	public void setInicio(LocalDate inicio) {
 		this.inicio = inicio;
 	}
 
-	public Date getFim() {
+	public LocalDate getFim() {
 		return fim;
 	}
 
-	public void setFim(Date fim) {
+	public void setFim(LocalDate fim) {
 		this.fim = fim;
 	}
 

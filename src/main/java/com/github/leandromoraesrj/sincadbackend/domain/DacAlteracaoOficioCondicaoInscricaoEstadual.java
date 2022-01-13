@@ -1,7 +1,9 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,25 +21,24 @@ public class DacAlteracaoOficioCondicaoInscricaoEstadual extends Dac {
 	@OneToOne
 	@JoinColumn(name = "sq_condicao_inscricao_estadual")
 	private CondicaoInscricaoEstadual condicaaoInscricaoEstadual;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "dt_inicio")
-	private Date inicio;
-	@Temporal(TemporalType.DATE)
+	private LocalDate inicio;
 	@Column(name = "dt_fim")
-	private Date fim;
+	private LocalDate fim;
 	
 	public DacAlteracaoOficioCondicaoInscricaoEstadual() {
 		super();
 	}
 
-	public DacAlteracaoOficioCondicaoInscricaoEstadual(BigDecimal id, String numero, UnidadeEmpresarial unidadeEmpresarial,
-			Estabelecimento estabelecimento, Inscricao inscricao, CondicaoInscricaoEstadual condicaaoInscricaoEstadual,
-			Date inicio, Date fim) {
-		super(id, numero, unidadeEmpresarial, estabelecimento, inscricao);
-		this.condicaaoInscricaoEstadual = condicaaoInscricaoEstadual;
+	public DacAlteracaoOficioCondicaoInscricaoEstadual(BigDecimal id, String numero, LocalDateTime dataCriacao,
+			Instant dataProcessamento, UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento,
+			Inscricao inscricao, CondicaoInscricaoEstadual condicaoInscricaoEstadual, LocalDate inicio, LocalDate fim) {
+		super(id, numero, dataCriacao, dataProcessamento, unidadeEmpresarial, estabelecimento, inscricao);
+		this.condicaaoInscricaoEstadual = condicaoInscricaoEstadual;
 		this.inicio = inicio;
 		this.fim = fim;
 	}
+
 
 	public CondicaoInscricaoEstadual getCondicaaoInscricaoEstadual() {
 		return condicaaoInscricaoEstadual;
@@ -47,19 +48,19 @@ public class DacAlteracaoOficioCondicaoInscricaoEstadual extends Dac {
 		this.condicaaoInscricaoEstadual = condicaaoInscricaoEstadual;
 	}
 
-	public Date getInicio() {
+	public LocalDate getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(Date inicio) {
+	public void setInicio(LocalDate inicio) {
 		this.inicio = inicio;
 	}
 
-	public Date getFim() {
+	public LocalDate getFim() {
 		return fim;
 	}
 
-	public void setFim(Date fim) {
+	public void setFim(LocalDate fim) {
 		this.fim = fim;
 	}
 

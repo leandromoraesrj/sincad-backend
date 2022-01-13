@@ -2,6 +2,7 @@ package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -29,12 +30,10 @@ public class InscricaoRegimeApuracao implements Serializable {
 	private BigDecimal id;	
 	@Column(name = "in_excluido")
 	private boolean excluido;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "dt_inicio")
-	private Date inicio;
-	@Temporal(TemporalType.DATE)
+	private LocalDate inicio;
 	@Column(name = "dt_fim")
-	private Date fim;
+	private LocalDate fim;
 	@ManyToOne
 	@JoinColumn(name = "sq_inscricao_estabelecimento")
 	private Inscricao inscricao;
@@ -45,7 +44,7 @@ public class InscricaoRegimeApuracao implements Serializable {
 	public InscricaoRegimeApuracao() {		
 	}
 
-	public InscricaoRegimeApuracao(BigDecimal id, boolean excluido, Date inicio, Date fim, Inscricao inscricao,
+	public InscricaoRegimeApuracao(BigDecimal id, boolean excluido, LocalDate inicio, LocalDate fim, Inscricao inscricao,
 			RegimeApuracao regimeApuracao) {
 		super();
 		this.id = id;
@@ -72,19 +71,19 @@ public class InscricaoRegimeApuracao implements Serializable {
 		this.excluido = excluido;
 	}
 
-	public Date getInicio() {
+	public LocalDate getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(Date inicio) {
+	public void setInicio(LocalDate inicio) {
 		this.inicio = inicio;
 	}
 
-	public Date getFim() {
+	public LocalDate getFim() {
 		return fim;
 	}
 
-	public void setFim(Date fim) {
+	public void setFim(LocalDate fim) {
 		this.fim = fim;
 	}
 

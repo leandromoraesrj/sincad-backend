@@ -2,6 +2,8 @@ package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -29,6 +31,10 @@ public abstract class Dac implements Serializable {
 	private BigDecimal id;
 	@Column(name = "nu_dac")
 	private String numero;
+	@Column(name = "dh_criacao")
+	private LocalDateTime dataCriacao;
+	@Column(name = "dh_processamento")
+	private Instant dataProcessamento;
 	@ManyToOne
 	@JoinColumn(name = "sq_unidade_empresarial")
 	private UnidadeEmpresarial unidadeEmpresarial;
@@ -42,15 +48,19 @@ public abstract class Dac implements Serializable {
 	public Dac() {		
 	}
 
-	public Dac(BigDecimal id, String numero, UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento,
-			Inscricao inscricao) {
+	public Dac(BigDecimal id, String numero, LocalDateTime dataCriacao, Instant dataProcessamento,
+			UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento, Inscricao inscricao) {
 		super();
 		this.id = id;
 		this.numero = numero;
+		this.dataCriacao = dataCriacao;
+		this.dataProcessamento = dataProcessamento;
 		this.unidadeEmpresarial = unidadeEmpresarial;
 		this.estabelecimento = estabelecimento;
 		this.inscricao = inscricao;
 	}
+
+
 
 	public BigDecimal getId() {
 		return id;
@@ -91,6 +101,23 @@ public abstract class Dac implements Serializable {
 	public void setInscricao(Inscricao inscricao) {
 		this.inscricao = inscricao;
 	}
+	
+	public LocalDateTime getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(LocalDateTime dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Instant getDataProcessamento() {
+		return dataProcessamento;
+	}
+
+	public void setDataProcessamento(Instant dataProcessamento) {
+		this.dataProcessamento = dataProcessamento;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -111,7 +138,8 @@ public abstract class Dac implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Dac [id=" + id + ", numero=" + numero + ", unidadeEmpresarial=" + unidadeEmpresarial
-				+ ", estabelecimento=" + estabelecimento + ", inscricao=" + inscricao + "]";
-	}	
+		return "Dac [id=" + id + ", numero=" + numero + ", dataCriacao=" + dataCriacao + ", dataProcessamento="
+				+ dataProcessamento + ", unidadeEmpresarial=" + unidadeEmpresarial + ", estabelecimento="
+				+ estabelecimento + ", inscricao=" + inscricao + "]";
+	}
 }
