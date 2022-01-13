@@ -1,6 +1,7 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +26,7 @@ public class UnidadeEmpresarial implements Serializable {
 	@SequenceGenerator(name = "se_unidade_empresarial_generator", sequenceName = "se_unidade_empresarial", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_unidade_empresarial_generator")
 	@Column(name = "sq_unidade_empresarial")
-	private Long id;	
+	private BigDecimal id;	
 	@Column(name = "no_razao_social")
 	private String razaoSocial;	
 	@Column(name = "tp_pessoa")
@@ -45,7 +46,7 @@ public class UnidadeEmpresarial implements Serializable {
 	public UnidadeEmpresarial() {		
 	}
 
-	public UnidadeEmpresarial(Long id, String razaoSocial, String tipoPessoa, String raizCNPJ, String cpf) {
+	public UnidadeEmpresarial(BigDecimal id, String razaoSocial, String tipoPessoa, String raizCNPJ, String cpf) {
 		super();
 		this.id = id;
 		this.razaoSocial = razaoSocial;
@@ -54,11 +55,11 @@ public class UnidadeEmpresarial implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Long getId() {
+	public BigDecimal getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(BigDecimal id) {
 		this.id = id;
 	}
 

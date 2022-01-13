@@ -23,7 +23,7 @@ public class TipoUnidadeEstabelecimento implements Serializable {
 	@SequenceGenerator(name = "se_tipo_unid_estabelecimento_generator", sequenceName = "se_tipo_unid_estabelecimento", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_tipo_unid_estabelecimento_generator")
 	@Column(name = "sq_tipo_unid_estabelecimento")
-	private Long id;
+	private int id;
 	@Column(name = "ds_tipo_unid_estabelecimento")
 	private String descricao;
 	@Column(name = "CO_RFB")
@@ -36,7 +36,7 @@ public class TipoUnidadeEstabelecimento implements Serializable {
 	public TipoUnidadeEstabelecimento() {		
 	}
 
-	public TipoUnidadeEstabelecimento(Long id, String descricao, String codigoRFB, boolean sujeitoInscricaoEstadual) {
+	public TipoUnidadeEstabelecimento(int id, String descricao, String codigoRFB, boolean sujeitoInscricaoEstadual) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
@@ -44,11 +44,11 @@ public class TipoUnidadeEstabelecimento implements Serializable {
 		this.sujeitoInscricaoEstadual = sujeitoInscricaoEstadual;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

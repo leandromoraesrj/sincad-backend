@@ -1,5 +1,6 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -29,7 +30,7 @@ public class DacAlteracaoOficioCondicaoInscricaoEstadual extends Dac {
 		super();
 	}
 
-	public DacAlteracaoOficioCondicaoInscricaoEstadual(Long id, String numero, UnidadeEmpresarial unidadeEmpresarial,
+	public DacAlteracaoOficioCondicaoInscricaoEstadual(BigDecimal id, String numero, UnidadeEmpresarial unidadeEmpresarial,
 			Estabelecimento estabelecimento, Inscricao inscricao, CondicaoInscricaoEstadual condicaaoInscricaoEstadual,
 			Date inicio, Date fim) {
 		super(id, numero, unidadeEmpresarial, estabelecimento, inscricao);

@@ -1,6 +1,7 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Inscricao implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private Long id;
+	private BigDecimal id;
 	@Column(name = "nu_inscricao_estadual")
 	private Long numero;
 	@Temporal(TemporalType.DATE)
@@ -41,7 +42,7 @@ public class Inscricao implements Serializable {
 	public Inscricao() {		
 	}
 
-	public Inscricao(Long id, Long numero, Date dataConcessao, Estabelecimento estabelecimento) {
+	public Inscricao(BigDecimal id, Long numero, Date dataConcessao, Estabelecimento estabelecimento) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -49,11 +50,11 @@ public class Inscricao implements Serializable {
 		this.estabelecimento = estabelecimento;
 	}
 
-	public Long getId() {
+	public BigDecimal getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(BigDecimal id) {
 		this.id = id;
 	}
 

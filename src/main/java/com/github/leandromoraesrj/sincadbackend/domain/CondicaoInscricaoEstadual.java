@@ -20,7 +20,7 @@ public class CondicaoInscricaoEstadual implements Serializable {
 	@SequenceGenerator(name = "se_condicao_inscricao_estadual_generator", sequenceName = "se_condicao_inscricao_estadual", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_condicao_inscricao_estadual_generator")
 	@Column(name = "sq_condicao_inscricao_estadual")
-	private Long id;
+	private int id;
 	@Column(name = "sq_situacao_cadastral")
 	private Long situacaoCadastral;
 	@Column(name = "sg_condicao_inscricao_estadual")
@@ -31,7 +31,7 @@ public class CondicaoInscricaoEstadual implements Serializable {
 	public CondicaoInscricaoEstadual() {		
 	}
 
-	public CondicaoInscricaoEstadual(Long id, Long situacaoCadastral, String sigla, String descricao) {
+	public CondicaoInscricaoEstadual(int id, Long situacaoCadastral, String sigla, String descricao) {
 		super();
 		this.id = id;
 		this.situacaoCadastral = situacaoCadastral;
@@ -39,11 +39,11 @@ public class CondicaoInscricaoEstadual implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

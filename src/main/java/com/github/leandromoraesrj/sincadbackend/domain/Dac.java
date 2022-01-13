@@ -1,6 +1,7 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -25,7 +26,7 @@ public abstract class Dac implements Serializable {
 	@SequenceGenerator(name = "se_dac_generator", sequenceName = "se_dac", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_dac_generator")
 	@Column(name = "sq_dac")
-	private Long id;
+	private BigDecimal id;
 	@Column(name = "nu_dac")
 	private String numero;
 	@ManyToOne
@@ -41,7 +42,7 @@ public abstract class Dac implements Serializable {
 	public Dac() {		
 	}
 
-	public Dac(Long id, String numero, UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento,
+	public Dac(BigDecimal id, String numero, UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento,
 			Inscricao inscricao) {
 		super();
 		this.id = id;
@@ -51,11 +52,11 @@ public abstract class Dac implements Serializable {
 		this.inscricao = inscricao;
 	}
 
-	public Long getId() {
+	public BigDecimal getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(BigDecimal id) {
 		this.id = id;
 	}
 

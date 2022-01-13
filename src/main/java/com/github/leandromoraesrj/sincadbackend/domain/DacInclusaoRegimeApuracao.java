@@ -1,5 +1,6 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,7 +27,7 @@ public class DacInclusaoRegimeApuracao extends Dac {
 		super();
 	}
 
-	public DacInclusaoRegimeApuracao(Long id, String numero, UnidadeEmpresarial unidadeEmpresarial,
+	public DacInclusaoRegimeApuracao(BigDecimal id, String numero, UnidadeEmpresarial unidadeEmpresarial,
 			Estabelecimento estabelecimento, Inscricao inscricao, RegimeApuracao regimeApuracao, Date inicio) {
 		super(id, numero, unidadeEmpresarial, estabelecimento, inscricao);
 		this.regimeApuracao = regimeApuracao;	

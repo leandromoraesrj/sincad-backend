@@ -1,6 +1,7 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 	@SequenceGenerator(name = "se_inscricao_condicao_inscrica_generator", sequenceName = "se_inscricao_condicao_inscrica", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_inscricao_condicao_inscrica_generator")
 	@Column(name = "sq_inscricao_condicao_inscrica")
-	private Long id;
+	private BigDecimal id;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dt_inicio")
 	private Date inicio;
@@ -42,7 +43,7 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 	public InscricaoCondicaoInscricaoEstadual() {
 	}
 
-	public InscricaoCondicaoInscricaoEstadual(Long id, Date inicio, Date fim, Inscricao inscricao, CondicaoInscricaoEstadual condicao) {
+	public InscricaoCondicaoInscricaoEstadual(BigDecimal id, Date inicio, Date fim, Inscricao inscricao, CondicaoInscricaoEstadual condicao) {
 		super();
 		this.id = id;
 		this.inicio = inicio;
@@ -51,11 +52,11 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 		this.condicao = condicao;
 	}
 
-	public Long getId() {
+	public BigDecimal getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(BigDecimal id) {
 		this.id = id;
 	}
 
