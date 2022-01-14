@@ -26,7 +26,7 @@ public class Inscricao implements Serializable {
 	@Id
 	private BigDecimal id;
 	@Column(name = "nu_inscricao_estadual")
-	private Long numero;
+	private int numero;
 	@Column(name = "dt_concessao_inscricao")
 	private LocalDate dataConcessao;
 	@OneToOne
@@ -41,7 +41,7 @@ public class Inscricao implements Serializable {
 	public Inscricao() {		
 	}
 
-	public Inscricao(BigDecimal id, Long numero, LocalDate dataConcessao, Estabelecimento estabelecimento) {
+	public Inscricao(BigDecimal id, int numero, LocalDate dataConcessao, Estabelecimento estabelecimento) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -57,11 +57,11 @@ public class Inscricao implements Serializable {
 		this.id = id;
 	}
 
-	public Long getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
-	public void setNumero(Long numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.github.leandromoraesrj.sincadbackend.domain.enuns.SituacaoCadastralEnum;
+
 @Entity
 @Table(name = "condicao_inscricao_estadual")
 public class CondicaoInscricaoEstadual implements Serializable {
@@ -22,7 +24,7 @@ public class CondicaoInscricaoEstadual implements Serializable {
 	@Column(name = "sq_condicao_inscricao_estadual")
 	private int id;
 	@Column(name = "sq_situacao_cadastral")
-	private Long situacaoCadastral;
+	private int situacaoCadastral;
 	@Column(name = "sg_condicao_inscricao_estadual")
 	private String sigla;
 	@Column(name = "ds_condicao_inscricao_estadual")
@@ -31,10 +33,10 @@ public class CondicaoInscricaoEstadual implements Serializable {
 	public CondicaoInscricaoEstadual() {		
 	}
 
-	public CondicaoInscricaoEstadual(int id, Long situacaoCadastral, String sigla, String descricao) {
+	public CondicaoInscricaoEstadual(int id, SituacaoCadastralEnum situacaoCadastral, String sigla, String descricao) {
 		super();
 		this.id = id;
-		this.situacaoCadastral = situacaoCadastral;
+		this.situacaoCadastral = situacaoCadastral.getCod();
 		this.sigla = sigla;
 		this.descricao = descricao;
 	}
@@ -47,12 +49,12 @@ public class CondicaoInscricaoEstadual implements Serializable {
 		this.id = id;
 	}
 
-	public Long getSituacaoCadastral() {
-		return situacaoCadastral;
+	public SituacaoCadastralEnum getSituacaoCadastral() {
+		return SituacaoCadastralEnum.toEnum(situacaoCadastral);
 	}
 
-	public void setSituacaoCadastral(Long situacaoCadastral) {
-		this.situacaoCadastral = situacaoCadastral;
+	public void setSituacaoCadastral(SituacaoCadastralEnum situacaoCadastral) {
+		this.situacaoCadastral = situacaoCadastral.getCod();
 	}
 
 	public String getSigla() {

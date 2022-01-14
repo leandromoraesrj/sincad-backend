@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.github.leandromoraesrj.sincadbackend.domain.enuns.TipoPessoaEnum;
+
 @Entity
 @Table(name = "unidade_empresarial")
 public class UnidadeEmpresarial implements Serializable {	
@@ -46,11 +48,11 @@ public class UnidadeEmpresarial implements Serializable {
 	public UnidadeEmpresarial() {		
 	}
 
-	public UnidadeEmpresarial(BigDecimal id, String razaoSocial, String tipoPessoa, String raizCNPJ, String cpf) {
+	public UnidadeEmpresarial(BigDecimal id, String razaoSocial, TipoPessoaEnum tipoPessoa, String raizCNPJ, String cpf) {
 		super();
 		this.id = id;
 		this.razaoSocial = razaoSocial;
-		this.tipoPessoa = tipoPessoa;
+		this.tipoPessoa = tipoPessoa.getCod();
 		this.raizCNPJ = raizCNPJ;
 		this.cpf = cpf;
 	}
@@ -71,12 +73,12 @@ public class UnidadeEmpresarial implements Serializable {
 		this.razaoSocial = razaoSocial;
 	}
 
-	public String getTipoPessoa() {
-		return tipoPessoa;
+	public TipoPessoaEnum getTipoPessoa() {
+		return TipoPessoaEnum.toEnum(tipoPessoa);
 	}
 
-	public void setTipoPessoa(String tipoPessoa) {
-		this.tipoPessoa = tipoPessoa;
+	public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
+		this.tipoPessoa = tipoPessoa.getCod();
 	}
 
 	public String getRaizCNPJ() {
