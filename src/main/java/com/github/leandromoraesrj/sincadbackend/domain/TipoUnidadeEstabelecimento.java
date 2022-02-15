@@ -26,7 +26,7 @@ public class TipoUnidadeEstabelecimento implements Serializable {
 	private int id;
 	@Column(name = "ds_tipo_unid_estabelecimento")
 	private String descricao;
-	@Column(name = "CO_RFB")
+	@Column(name = "co_rfb")
 	private String codigoRFB;
 	@Column(name = "in_sujeito_inscricao_estadual")
 	private boolean sujeitoInscricaoEstadual;
