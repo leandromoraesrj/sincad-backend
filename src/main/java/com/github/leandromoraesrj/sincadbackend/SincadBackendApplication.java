@@ -1,32 +1,29 @@
 package com.github.leandromoraesrj.sincadbackend;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@RestController
-public class SincadBackendApplication {
-	//Para Injetar um parâmetro de aplication.properties
-	@Value("${spring.application.name}")
-	private String applicationName;
-
-	@Value("${server.servlet.context-path}")
-	private String applicationConext;
-	
+public class SincadBackendApplication implements CommandLineRunner {	
 	@Value("${spring.profiles.active}")
 	private String applicationProfile;
+	
+	//Para o Logger exibir mensagem no console
+	private static Logger logger = LoggerFactory.getLogger(SincadBackendApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(SincadBackendApplication.class, args);
 	}
-	
-	//Para obter informações da aplicação, por exemplo, o contexto 
-	@RequestMapping(value = "/teste", method = RequestMethod.GET)
-	public String teste() {
-		return "Nome da Aplicação: " + applicationName + "\n" + "Contexto da Aplicação: " + applicationConext + "\n" + "Ambiente da Aplicação: " + applicationProfile;
+
+	@Override
+	public void run(String... args) throws Exception {
+		if (applicationProfile.equals("test")) {
+			logger.info("Testando CommandRunner");			
+		}
 	}
 }
