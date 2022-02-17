@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.github.leandromoraesrj.sincad-backend</groupId>
 	<artifactId>sincad-backend</artifactId>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<name>sincad-backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -43,6 +43,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
+		<!-- javamelody-core -->
+		<dependency>
+			<groupId>net.bull.javamelody</groupId>
+			<artifactId>javamelody-spring-boot-starter</artifactId>
+			<version>1.90.0</version>
+		</dependency>
+		<!-- javamelody-core -->
 	</dependencies>
 
 	<build>
