@@ -34,7 +34,7 @@ public class Estabelecimento implements Serializable {
 	private String cnpj;
 	@Column(name = "ds_titulo_estabelecimento")
 	private String titulo;
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "sq_unidade_empresarial")
 	private UnidadeEmpresarial unidadeEmpresarial;
 	@OneToOne(mappedBy = "estabelecimento", cascade = CascadeType.ALL)

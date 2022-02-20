@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -37,7 +38,7 @@ public class UnidadeEmpresarial implements Serializable {
 	private String raizCNPJ;	
 	@Column(name = "nu_cpf")
 	private String cpf;
-	@OneToMany(mappedBy = "unidadeEmpresarial")
+	@OneToMany(mappedBy = "unidadeEmpresarial", cascade = CascadeType.REMOVE)
 	private List<Estabelecimento> estabelecimentos = new ArrayList<>();
 	@ElementCollection
 	@CollectionTable(name = "historico_no_razao_social")
