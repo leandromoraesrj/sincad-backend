@@ -23,6 +23,7 @@ import com.github.leandromoraesrj.sincadbackend.domain.TipoUnidadeEstabeleciment
 import com.github.leandromoraesrj.sincadbackend.domain.UnidadeEmpresarial;
 import com.github.leandromoraesrj.sincadbackend.domain.enuns.TipoPessoaEnum;
 import com.github.leandromoraesrj.sincadbackend.repositories.DacInclusaoRegimeApuracaoRepository;
+import com.github.leandromoraesrj.sincadbackend.services.ArquivoMeiService;
 import com.github.leandromoraesrj.sincadbackend.services.EstabelecimentoService;
 import com.github.leandromoraesrj.sincadbackend.services.RegimeApuracaoService;
 import com.github.leandromoraesrj.sincadbackend.services.UnidadeEmpresarialService;
@@ -45,6 +46,10 @@ public class SincadBackendApplication implements CommandLineRunner {
 	@Autowired
 	private EstabelecimentoService estabService;
 	
+	@Autowired
+	private ArquivoMeiService arquivoMeiService;
+	
+	//Para testar repositório
 	@Autowired
 	private DacInclusaoRegimeApuracaoRepository dacRegimeRepository;
 	
@@ -139,6 +144,8 @@ public class SincadBackendApplication implements CommandLineRunner {
 			dac.setRegimeApuracao(regime1);
 			
 			dacRegimeRepository.save(dac);
+			
+			arquivoMeiService.iniciarImportacaoArquivoMei();
 		}
 	}
 }

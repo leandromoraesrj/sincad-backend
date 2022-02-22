@@ -11,8 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "regime_apuracao")
@@ -23,9 +21,9 @@ public class RegimeApuracao implements Serializable {
 	@SequenceGenerator(name = "se_regime_apuracao_generator", sequenceName = "se_regime_apuracao", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_regime_apuracao_generator")
 	@Column(name = "sq_regime_apuracao")
-	private int id;	
+	private Integer id;	
 	@Column(name = "co_regime_apuracao")
-	private int codigo;	
+	private Integer codigo;	
 	@Column(name = "no_regime_apuracao")
 	private String nome;
 	@Column(name = "dt_inicio")
@@ -36,7 +34,7 @@ public class RegimeApuracao implements Serializable {
 	public RegimeApuracao() {		
 	}
 
-	public RegimeApuracao(int id, int codigo, String nome, LocalDate inicio, LocalDate fim) {
+	public RegimeApuracao(Integer id, Integer codigo, String nome, LocalDate inicio, LocalDate fim) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
@@ -45,19 +43,19 @@ public class RegimeApuracao implements Serializable {
 		this.fim = fim;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 

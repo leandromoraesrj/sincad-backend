@@ -1,7 +1,6 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +14,6 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "inscricao_estabelecimento")
@@ -24,9 +21,9 @@ public class Inscricao implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private BigDecimal id;
+	private Long id;
 	@Column(name = "nu_inscricao_estadual")
-	private int numero;
+	private Integer numero;
 	@Column(name = "dt_concessao_inscricao")
 	private LocalDate dataConcessao;
 	@OneToOne
@@ -41,7 +38,7 @@ public class Inscricao implements Serializable {
 	public Inscricao() {		
 	}
 
-	public Inscricao(BigDecimal id, int numero, LocalDate dataConcessao, Estabelecimento estabelecimento) {
+	public Inscricao(Long id, Integer numero, LocalDate dataConcessao, Estabelecimento estabelecimento) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -49,19 +46,19 @@ public class Inscricao implements Serializable {
 		this.estabelecimento = estabelecimento;
 	}
 
-	public BigDecimal getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(BigDecimal id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 

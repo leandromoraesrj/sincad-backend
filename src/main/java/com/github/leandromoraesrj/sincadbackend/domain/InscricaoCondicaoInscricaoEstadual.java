@@ -1,7 +1,6 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -14,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "inscricao_condicao_inscricao")
@@ -26,7 +23,7 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 	@SequenceGenerator(name = "se_inscricao_condicao_inscrica_generator", sequenceName = "se_inscricao_condicao_inscrica", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_inscricao_condicao_inscrica_generator")
 	@Column(name = "sq_inscricao_condicao_inscrica")
-	private BigDecimal id;
+	private Long id;
 	@Column(name = "dt_inicio")
 	private LocalDate inicio;
 	@Column(name = "dt_fim")
@@ -41,7 +38,7 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 	public InscricaoCondicaoInscricaoEstadual() {
 	}
 
-	public InscricaoCondicaoInscricaoEstadual(BigDecimal id, LocalDate inicio, LocalDate fim, Inscricao inscricao, CondicaoInscricaoEstadual condicao) {
+	public InscricaoCondicaoInscricaoEstadual(Long id, LocalDate inicio, LocalDate fim, Inscricao inscricao, CondicaoInscricaoEstadual condicao) {
 		super();
 		this.id = id;
 		this.inicio = inicio;
@@ -50,11 +47,11 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 		this.condicao = condicao;
 	}
 
-	public BigDecimal getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(BigDecimal id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

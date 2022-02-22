@@ -1,7 +1,6 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -29,13 +28,13 @@ public class UnidadeEmpresarial implements Serializable {
 	@SequenceGenerator(name = "se_unidade_empresarial_generator", sequenceName = "se_unidade_empresarial", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_unidade_empresarial_generator")
 	@Column(name = "sq_unidade_empresarial")
-	private BigDecimal id;	
+	private Long id;	
 	@Column(name = "no_razao_social")
 	private String razaoSocial;	
 	@Column(name = "tp_pessoa")
 	private String tipoPessoa;
 	@Column(name = "nu_raiz_cnpj")	
-	private String raizCNPJ;	
+	private String raizCnpj;	
 	@Column(name = "nu_cpf")
 	private String cpf;
 	@OneToMany(mappedBy = "unidadeEmpresarial", cascade = CascadeType.REMOVE)
@@ -49,20 +48,20 @@ public class UnidadeEmpresarial implements Serializable {
 	public UnidadeEmpresarial() {		
 	}
 
-	public UnidadeEmpresarial(BigDecimal id, String razaoSocial, TipoPessoaEnum tipoPessoa, String raizCNPJ, String cpf) {
+	public UnidadeEmpresarial(Long id, String razaoSocial, TipoPessoaEnum tipoPessoa, String raizCnpj, String cpf) {
 		super();
 		this.id = id;
 		this.razaoSocial = razaoSocial;
 		this.tipoPessoa = tipoPessoa.getCod();
-		this.raizCNPJ = raizCNPJ;
+		this.raizCnpj = raizCnpj;
 		this.cpf = cpf;
 	}
 
-	public BigDecimal getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(BigDecimal id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -82,12 +81,12 @@ public class UnidadeEmpresarial implements Serializable {
 		this.tipoPessoa = tipoPessoa.getCod();
 	}
 
-	public String getRaizCNPJ() {
-		return raizCNPJ;
+	public String getRaizCnpj() {
+		return raizCnpj;
 	}
 
-	public void setRaizCNPJ(String raizCNPJ) {
-		this.raizCNPJ = raizCNPJ;
+	public void setRaizCnpj(String raizCnpj) {
+		this.raizCnpj = raizCnpj;
 	}
 
 	public String getCpf() {
@@ -142,6 +141,6 @@ public class UnidadeEmpresarial implements Serializable {
 	@Override
 	public String toString() {
 		return "UnidadeEmpresarial [id=" + id + ", razaoSocial=" + razaoSocial + ", tipoPessoa=" + tipoPessoa
-				+ ", raizCNPJ=" + raizCNPJ + ", cpf=" + cpf + "]";
+				+ ", raizCnpj=" + raizCnpj + ", cpf=" + cpf + "]";
 	}
 }

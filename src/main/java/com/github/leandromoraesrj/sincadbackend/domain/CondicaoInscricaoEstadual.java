@@ -22,9 +22,9 @@ public class CondicaoInscricaoEstadual implements Serializable {
 	@SequenceGenerator(name = "se_condicao_inscricao_estadual_generator", sequenceName = "se_condicao_inscricao_estadual", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_condicao_inscricao_estadual_generator")
 	@Column(name = "sq_condicao_inscricao_estadual")
-	private int id;
+	private Integer id;
 	@Column(name = "sq_situacao_cadastral")
-	private int situacaoCadastral;
+	private Integer situacaoCadastral;
 	@Column(name = "sg_condicao_inscricao_estadual")
 	private String sigla;
 	@Column(name = "ds_condicao_inscricao_estadual")
@@ -33,7 +33,7 @@ public class CondicaoInscricaoEstadual implements Serializable {
 	public CondicaoInscricaoEstadual() {		
 	}
 
-	public CondicaoInscricaoEstadual(int id, SituacaoCadastralEnum situacaoCadastral, String sigla, String descricao) {
+	public CondicaoInscricaoEstadual(Integer id, SituacaoCadastralEnum situacaoCadastral, String sigla, String descricao) {
 		super();
 		this.id = id;
 		this.situacaoCadastral = situacaoCadastral.getCod();
@@ -45,7 +45,7 @@ public class CondicaoInscricaoEstadual implements Serializable {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

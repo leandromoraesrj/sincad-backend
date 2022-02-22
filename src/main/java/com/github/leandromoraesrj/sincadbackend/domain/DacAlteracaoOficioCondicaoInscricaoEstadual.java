@@ -1,6 +1,5 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "dac_alter_cond_insc_oficio")
@@ -30,7 +27,7 @@ public class DacAlteracaoOficioCondicaoInscricaoEstadual extends Dac {
 		super();
 	}
 
-	public DacAlteracaoOficioCondicaoInscricaoEstadual(BigDecimal id, String numero, LocalDateTime dataCriacao,
+	public DacAlteracaoOficioCondicaoInscricaoEstadual(Long id, String numero, LocalDateTime dataCriacao,
 			Instant dataProcessamento, UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento,
 			Inscricao inscricao, CondicaoInscricaoEstadual condicaoInscricaoEstadual, LocalDate inicio, LocalDate fim) {
 		super(id, numero, dataCriacao, dataProcessamento, unidadeEmpresarial, estabelecimento, inscricao);

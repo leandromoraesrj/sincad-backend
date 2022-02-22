@@ -1,6 +1,5 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "dac_inclusao_regime_apuracao")
@@ -28,7 +25,7 @@ public class DacInclusaoRegimeApuracao extends Dac {
 		super();
 	}
 
-	public DacInclusaoRegimeApuracao(BigDecimal id, String numero, LocalDateTime dataCriacao, Instant dataProcessamento,
+	public DacInclusaoRegimeApuracao(Long id, String numero, LocalDateTime dataCriacao, Instant dataProcessamento,
 			UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento, Inscricao inscricao, RegimeApuracao regimeApuracao, LocalDate inicio) {
 		super(id, numero, dataCriacao, dataProcessamento, unidadeEmpresarial, estabelecimento, inscricao);
 		this.regimeApuracao = regimeApuracao;

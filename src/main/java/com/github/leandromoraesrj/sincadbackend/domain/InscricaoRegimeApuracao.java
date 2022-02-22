@@ -1,9 +1,7 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -15,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "inscricao_estab_reg_apuracao")
@@ -27,7 +23,7 @@ public class InscricaoRegimeApuracao implements Serializable {
 	@SequenceGenerator(name = "se_inscricao_estab_reg_apur_generator", sequenceName = "se_inscricao_estab_reg_apur", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "se_inscricao_estab_reg_apur_generator")
 	@Column(name = "sq_inscricao_estab_reg_apur")
-	private BigDecimal id;	
+	private Long id;	
 	@Column(name = "in_excluido")
 	private boolean excluido;
 	@Column(name = "dt_inicio")
@@ -44,7 +40,7 @@ public class InscricaoRegimeApuracao implements Serializable {
 	public InscricaoRegimeApuracao() {		
 	}
 
-	public InscricaoRegimeApuracao(BigDecimal id, boolean excluido, LocalDate inicio, LocalDate fim, Inscricao inscricao,
+	public InscricaoRegimeApuracao(Long id, boolean excluido, LocalDate inicio, LocalDate fim, Inscricao inscricao,
 			RegimeApuracao regimeApuracao) {
 		super();
 		this.id = id;
@@ -55,11 +51,11 @@ public class InscricaoRegimeApuracao implements Serializable {
 		this.regimeApuracao = regimeApuracao;
 	}
 
-	public BigDecimal getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(BigDecimal id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
