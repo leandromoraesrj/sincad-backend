@@ -1,5 +1,6 @@
 package com.github.leandromoraesrj.sincadbackend.services;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -8,6 +9,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,47 +23,44 @@ import com.github.leandromoraesrj.sincadbackend.repositories.ArquivoMeiRepositor
 public class ArquivoMeiService {
 	private static Logger logger = LoggerFactory.getLogger(ArquivoMeiService.class);
 	private static final String PATH_ARQUIVO_MEI = "arquivo/PERMEI.txt";
-	private static final Integer maxQuantidadeLinhaLidas = 1000000;
+	private static final int maxQuantidadeLinhaLidas = 1000000;
 
 	@Autowired
 	private ArquivoMeiRepository repo;
 
 	private void importarArquivoMei() {
-		try {
-			logger.info(MessageFormat.format("Lendo arquivo: {0}", Paths.get(PATH_ARQUIVO_MEI).toAbsolutePath()));
+		logger.info(MessageFormat.format("Lendo arquivo: {0}", Paths.get(PATH_ARQUIVO_MEI).toAbsolutePath()));
 
-			List<String> list = Files.readAllLines(Paths.get(PATH_ARQUIVO_MEI), StandardCharsets.UTF_8);
-
-			if (list.size() == 0)
-				throw new Exception("Arquivo vázio");
-
+		try (BufferedReader reader = Files.newBufferedReader(Paths.get(PATH_ARQUIVO_MEI), StandardCharsets.UTF_8)) {
 			List<ArquivoMei> linhas = new ArrayList<ArquivoMei>();
-			Integer linha;
+			long qtdLinha = 0L;
+			Optional<String> linha;
 
-			for (linha = 1; linha <= list.size(); linha++) {
-				String raizCnpj = list.get(linha - 1).substring(0, 8);
-				linhas.add(new ArquivoMei(Long.valueOf(linha), raizCnpj));
+			while ((linha = Optional.ofNullable(reader.readLine())).isPresent()) {
+				String raizCnpj = linha.get().substring(0, 8);
+				qtdLinha++;
 
-				if (linhas.size() >= maxQuantidadeLinhaLidas) {
-					repo.persistirLinhas(linhas);
+				linhas.add(new ArquivoMei(qtdLinha, raizCnpj));
 
-					logger.info(MessageFormat.format("Número de linhas lidas: {0}", linha));
-
+				if (linhas.size() % maxQuantidadeLinhaLidas == 0) {
+					logger.info(MessageFormat.format("Quantidade de linhas lidas: {0}", qtdLinha));
+					logger.info("Executando Batch");
+					repo.executeBatch(linhas, ArquivoMeiRepository.TIPO_BATCH_NAMED);
 					linhas.clear();
 				}
 			}
 
-			if (linhas.size() < maxQuantidadeLinhaLidas) {
-				repo.persistirLinhas(linhas);
-
-				logger.info(MessageFormat.format("Número de linhas lidas: {0}", linha));
-
-				linhas.clear();
+			if (linhas.size() % maxQuantidadeLinhaLidas != 0) {
+				logger.info(MessageFormat.format("Quantidade de linhas lidas: {0}", qtdLinha));
+				logger.info("Executando Batch");
+				repo.executeBatch(linhas);
 			}
 		} catch (StringIndexOutOfBoundsException e) {
 			logger.error(MessageFormat.format("Tamanho inválido da linha: {0}", e.getMessage()));
 		} catch (IOException e) {
 			logger.error("Arquivo não encontrado");
+		} catch (RuntimeException e) {
+			logger.error(MessageFormat.format("Erro ao executar o Batch: {0}", e.getMessage()));
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
