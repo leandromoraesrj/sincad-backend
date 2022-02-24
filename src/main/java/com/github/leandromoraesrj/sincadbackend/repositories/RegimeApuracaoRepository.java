@@ -28,7 +28,8 @@ public interface RegimeApuracaoRepository extends JpaRepository<RegimeApuracao, 
 
 	// Query
 	@Query("select distinct c from RegimeApuracao c where c.fim is null and (upper(c.nome) like upper(:nome) or c.codigo = :codigo) order by c.nome asc, c.codigo desc")
-	List<RegimeApuracao> queryDistinctByNomeLikeIgnoreCaseOrCodigoAndFimIsNullOrderByNomeAscCodigoDesc(@Param("nome") String nome, @Param("codigo") Integer codigo);
+	List<RegimeApuracao> queryDistinctByNomeLikeIgnoreCaseOrCodigoAndFimIsNullOrderByNomeAscCodigoDesc(
+			@Param("nome") String nome, @Param("codigo") Integer codigo);
 
 	// QueryNativa
 	@Query(value = "select * from Regime_Apuracao c where c.dt_fim is null and c.no_regime_apuracao like ?1% order by c.no_regime_apuracao asc", nativeQuery = true)

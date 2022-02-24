@@ -1,8 +1,6 @@
 package com.github.leandromoraesrj.sincadbackend.domain;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +8,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "dac_alter_cond_insc_oficio")
 public class DacAlteracaoOficioCondicaoInscricaoEstadual extends Dac {
@@ -22,48 +31,4 @@ public class DacAlteracaoOficioCondicaoInscricaoEstadual extends Dac {
 	private LocalDate inicio;
 	@Column(name = "dt_fim")
 	private LocalDate fim;
-	
-	public DacAlteracaoOficioCondicaoInscricaoEstadual() {
-		super();
-	}
-
-	public DacAlteracaoOficioCondicaoInscricaoEstadual(Long id, String numero, LocalDateTime dataCriacao,
-			Instant dataProcessamento, UnidadeEmpresarial unidadeEmpresarial, Estabelecimento estabelecimento,
-			Inscricao inscricao, CondicaoInscricaoEstadual condicaoInscricaoEstadual, LocalDate inicio, LocalDate fim) {
-		super(id, numero, dataCriacao, dataProcessamento, unidadeEmpresarial, estabelecimento, inscricao);
-		this.condicaaoInscricaoEstadual = condicaoInscricaoEstadual;
-		this.inicio = inicio;
-		this.fim = fim;
-	}
-
-
-	public CondicaoInscricaoEstadual getCondicaaoInscricaoEstadual() {
-		return condicaaoInscricaoEstadual;
-	}
-
-	public void setCondicaaoInscricaoEstadual(CondicaoInscricaoEstadual condicaaoInscricaoEstadual) {
-		this.condicaaoInscricaoEstadual = condicaaoInscricaoEstadual;
-	}
-
-	public LocalDate getInicio() {
-		return inicio;
-	}
-
-	public void setInicio(LocalDate inicio) {
-		this.inicio = inicio;
-	}
-
-	public LocalDate getFim() {
-		return fim;
-	}
-
-	public void setFim(LocalDate fim) {
-		this.fim = fim;
-	}
-
-	@Override
-	public String toString() {
-		return "DacAlteracaoOficioCondicaoInscricaoEstadual [condicaaoInscricaoEstadual=" + condicaaoInscricaoEstadual
-				+ ", inicio=" + inicio + ", fim=" + fim + "]";
-	}		
 }

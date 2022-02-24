@@ -2,7 +2,6 @@ package com.github.leandromoraesrj.sincadbackend.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "inscricao_condicao_inscricao")
 public class InscricaoCondicaoInscricaoEstadual implements Serializable {
@@ -34,78 +40,4 @@ public class InscricaoCondicaoInscricaoEstadual implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "sq_condicao_inscricao_estadual")
 	private CondicaoInscricaoEstadual condicao;
-
-	public InscricaoCondicaoInscricaoEstadual() {
-	}
-
-	public InscricaoCondicaoInscricaoEstadual(Long id, LocalDate inicio, LocalDate fim, Inscricao inscricao, CondicaoInscricaoEstadual condicao) {
-		super();
-		this.id = id;
-		this.inicio = inicio;
-		this.fim = fim;
-		this.inscricao = inscricao;
-		this.condicao = condicao;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public LocalDate getInicio() {
-		return inicio;
-	}
-
-	public void setInicio(LocalDate inicio) {
-		this.inicio = inicio;
-	}
-
-	public LocalDate getFim() {
-		return fim;
-	}
-
-	public void setFim(LocalDate fim) {
-		this.fim = fim;
-	}
-
-	public Inscricao getInscricao() {
-		return inscricao;
-	}
-
-	public void setInscricao(Inscricao inscricao) {
-		this.inscricao = inscricao;
-	}
-
-	public CondicaoInscricaoEstadual getCondicao() {
-		return condicao;
-	}
-
-	public void setCondicao(CondicaoInscricaoEstadual condicao) {
-		this.condicao = condicao;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		InscricaoCondicaoInscricaoEstadual other = (InscricaoCondicaoInscricaoEstadual) obj;
-		return Objects.equals(id, other.id);
-	}
-
-	@Override
-	public String toString() {
-		return "InscricaoCondicaoInscricaoEstadual [id=" + id + ", inicio=" + inicio + ", fim=" + fim + "]";
-	}
 }

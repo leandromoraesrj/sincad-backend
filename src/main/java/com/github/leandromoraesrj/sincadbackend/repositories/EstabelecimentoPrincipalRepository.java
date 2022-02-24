@@ -7,6 +7,7 @@ import com.github.leandromoraesrj.sincadbackend.domain.EstabelecimentoPrincipal;
 import com.github.leandromoraesrj.sincadbackend.domain.EstabelecimentoPrincipalPK;
 
 @Repository
-public interface EstabelecimentoPrincipalRepository extends JpaRepository<EstabelecimentoPrincipal, EstabelecimentoPrincipalPK> {
+public interface EstabelecimentoPrincipalRepository
+		extends JpaRepository<EstabelecimentoPrincipal, EstabelecimentoPrincipalPK> {
 
 }

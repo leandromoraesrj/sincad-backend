@@ -10,7 +10,7 @@ import com.github.leandromoraesrj.sincadbackend.repositories.UnidadeEmpresarialR
 public class UnidadeEmpresarialService {
 	@Autowired
 	private UnidadeEmpresarialRespository repo;
-	
+
 	public void adicionarEmpresa(UnidadeEmpresarial unidade) {
 		repo.save(unidade);
 	}

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,11 +14,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "inscricao_estabelecimento")
 public class Inscricao implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private Long id;
 	@Column(name = "nu_inscricao_estadual")
@@ -34,77 +40,4 @@ public class Inscricao implements Serializable {
 	private List<InscricaoCondicaoInscricaoEstadual> condicoesInscricao = new ArrayList<>();
 	@OneToMany(mappedBy = "inscricao")
 	private List<InscricaoRegimeApuracao> regimesInscricao = new ArrayList<>();
-
-	public Inscricao() {		
-	}
-
-	public Inscricao(Long id, Integer numero, LocalDate dataConcessao, Estabelecimento estabelecimento) {
-		super();
-		this.id = id;
-		this.numero = numero;
-		this.dataConcessao = dataConcessao;
-		this.estabelecimento = estabelecimento;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Integer getNumero() {
-		return numero;
-	}
-
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
-
-	public LocalDate getDataConcessao() {
-		return dataConcessao;
-	}
-
-	public void setDataConcessao(LocalDate dataConcessao) {
-		this.dataConcessao = dataConcessao;
-	}
-
-	public Estabelecimento getEstabelecimento() {
-		return estabelecimento;
-	}
-
-	public void setEstabelecimento(Estabelecimento estabelecimento) {
-		this.estabelecimento = estabelecimento;
-	}
-	
-	public List<InscricaoCondicaoInscricaoEstadual> getCondicoesInscricao() {
-		return condicoesInscricao;
-	}
-
-	public void setCondicoesInscricao(List<InscricaoCondicaoInscricaoEstadual> condicoesInscricao) {
-		this.condicoesInscricao = condicoesInscricao;
-	}
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Inscricao other = (Inscricao) obj;
-		return Objects.equals(id, other.id);
-	}
-
-	@Override
-	public String toString() {
-		return "Inscricao [id=" + id + ", numero=" + numero + ", dataConcessao=" + dataConcessao + "]";
-	}
 }

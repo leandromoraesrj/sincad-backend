@@ -6,8 +6,6 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -15,8 +13,10 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.github.leandromoraesrj.sincadbackend.domain.ArquivoMei;
-import com.github.leandromoraesrj.sincadbackend.services.ArquivoMeiService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Repository
 public class ArquivoMeiRepository {
 	@Autowired
@@ -25,7 +25,6 @@ public class ArquivoMeiRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	private static Logger logger = LoggerFactory.getLogger(ArquivoMeiService.class);
 	public static final int TIPO_BATCH_NAMED = 1;
 	public static final int TIPO_BATCH_STATEMENT = 2;
 
@@ -53,15 +52,14 @@ public class ArquivoMeiRepository {
 			params.add(source);
 		});
 
-		logger.debug(MessageFormat.format("Batch Named executing for: {0}", list.size()));
+		log.debug(MessageFormat.format("Batch Named executing for: {0}", list.size()));
 		jdbcNamed.batchUpdate(SQL_INSERT_NAMED, params.stream().toArray(MapSqlParameterSource[]::new));
-		
-		logger.debug("Batch Named executed");
+		log.debug("Batch Named executed");
 	}
 
 	private void executeBatchStatement(List<ArquivoMei> list) {
 		try (PreparedStatement statement = jdbcTemplate.getDataSource().getConnection().prepareStatement(SQL_INSERT)) {
-			logger.debug("Connection established");
+			log.debug("Connection established");
 
 			list.forEach(n -> {
 				try {
@@ -73,9 +71,9 @@ public class ArquivoMeiRepository {
 				}
 			});
 
-			logger.debug(MessageFormat.format("Batch Statement executing for: {0}", list.size()));
+			log.debug(MessageFormat.format("Batch Statement executing for: {0}", list.size()));
 			statement.executeBatch();
-			logger.debug("Batch Statement executed");
+			log.debug("Batch Statement executed");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

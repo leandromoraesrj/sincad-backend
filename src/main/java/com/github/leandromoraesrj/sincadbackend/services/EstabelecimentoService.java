@@ -10,7 +10,7 @@ import com.github.leandromoraesrj.sincadbackend.repositories.EstabelecimentoRepo
 public class EstabelecimentoService {
 	@Autowired
 	private EstabelecimentoRepository repo;
-	
+
 	public void adicionarEstabelecimento(Estabelecimento estabelecimento) {
 		repo.save(estabelecimento);
 	}

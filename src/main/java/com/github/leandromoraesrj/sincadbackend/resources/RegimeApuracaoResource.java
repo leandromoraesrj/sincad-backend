@@ -13,12 +13,12 @@ import com.github.leandromoraesrj.sincadbackend.services.RegimeApuracaoService;
 public class RegimeApuracaoResource {
 	@Autowired
 	private RegimeApuracaoService service;
-	
-	@RequestMapping(value="/regimeapuracao", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/regimeapuracao", method = RequestMethod.GET)
 	public ResponseEntity<?> listarTodos() {
 		return ResponseEntity.ok(service.listarTodos());
 	}
-	
+
 	@RequestMapping(value = "/regimeapuracao/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> obter(@PathVariable Integer id) {
 		return ResponseEntity.of(service.obter(id));
